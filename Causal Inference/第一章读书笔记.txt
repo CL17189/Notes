@@ -1,0 +1,89 @@
+第一章：概率、图、因果模型介绍
+1.1 概率论
+1.为什么是概率：观察因果的语境常常是“不确定的”
+2.基本概念：主要是贝叶斯的一些公式；
+3.定义了后验概率O(H)，似然比L（）；乘积公式
+4.随机变量和期望：一些记号
+5.条件独立：定义是一个拓展版本，x,y,z是随机变量集合->记号：⊥
+*条件独立的不可逆性；性质：graphoid axioms（why:和图的关系）对公理的解释
+
+1.2 图和概率
+1.记号和术语：vertices (or nodes),edges (or links),adjacent, directed,bidirected, path, directed path, （a)cyclic; DAG, kinship, tree
+2.贝叶斯网络（图和概率的关系）
+图的作用——3；
+Undirected graphs, sometimes called Markov networks (Pearl 1988b), are used primarily to represent symmetrical spatial relationships；
+Directed graphs, especially DAGs, have been used to represent causal or temporal relationships，and came to be known as Bayesian networks,
+
+def：Markovian Parents：筛除无关变量之后剩余的变量
+->构建bayes网络
+->构建贝叶斯网络的必要条件->Markov Compatibility
+->一对充要条件
+->如何列出？需要独立性，独立性如何检测？d-seperation
+
+3.d-seperation：实质上就是几种图的情况
+->selection bias or Berkson’s paradox
+
+->d-seperation 的概率意义(d-s和条件独立的关系）
+
+->定理（关系）重述->几乎全部的分布的相容性
+->分布是M相关的充要条件Ordered Markov Condition
+->local” Markov condition
+
+->两个东西之间的关系：Observational Equivalence
+
+4. bayes网络推断
+贝叶斯公式->challenge->computations efficiently and within the representation level provided by the network topology.
+Algorithms->trees->cut-set conditioning method
+
+
+1.3 因果贝叶斯网络
+a more natural and more reliable way of expressing what we know or believe about the world since conditional independence judgments are by-products of stored causal relationships
+the ability to represent and respond to external or spontaneous changes.
+
+1.前提和定义
+The source of this flexibility rests on the assumption that each parent–child relationship in the network represents a stable and autonomous physical mechanism – in other words, that it is conceivable to change one such relationship without changing the others. Organizing one’s knowledge in such modular configurations permits one to predict the effect of external interventions with a minimum of extra information. Indeed, causal models (assuming they are valid) are much more informative than probability models. A joint distribution tells us how probable events are and how probabilities would change with subsequent observations, but a causal model also tells us how these probabilities would change as a result of external interventions – such as those encountered in policy analysis, treatment management, or planning everyday activity. Such changes cannot be deduced from a joint distribution, even if fully specified.——changes'
+assume that the change is local, and does not spread over to mechanisms other than those specified.
+
+->定义：因果贝叶斯网络
+
+->性质
+
+2.因果关系和稳定性
+ontological&epistemic；
+in marked contrast to probabilistic relationships, causal relationships remain invariant to changes in the mechanism that governs the causal variables；
+->whatever judgments people express about conditional independencies in a given domain are derived from the causal structure acquired.
+->causal models need not encode behavior under intervention but instead aim primarily to provide an “explanation” or “understanding” of how data are generated.
+
+
+1.4 FUNCTIONAL CAUSAL MODELS
+
+1.结构方程：
+例子->线性、非线性
+->和贝叶斯网络的对比，三个问题：预测、干预、反事实
+2. 概率预测
+定义：因果图；semi-Markovian<-> U determined;Markovian<->U are all independent;
+ 
+->connection between causation and probabilities :the parental Markov condition
+->it means...
+
+->we can use an equivalent functional model as specified in (1.40), and we can regard functional models as just another way of encoding joint distribution functions.
+(causal–functional specification has several advantages over the probabilistic specification)
+->these advantages are...
+
+3. 干预和因果效应
+all features of causal Bayesian networks (Section 1.3) can be emulated in Markovian functional models.
+offers greater flexibility and generality than that of a stochastic model
+
+4.反事实
+利用因果网络做一些统计推断不能办到的检验（The first lesson of this example is that stochastic causal models are insufficient for computing probabilities of counterfactuals; knowledge of the actual process behind P(y ƒ x) is needed for the computation.24 A second lesson is that a functional causal model constitutes a mathematical object sufficient for the computation (and definition) of such probabilities. Consider, for example, model 2 of (1.48). The way we concluded that a deceased treated subject (y  1, x  1) would have recovered if not treated involved three mental steps. First, we applied the evidence at hand,）；
+做法，要解决的问题（公式化）
+
+生成因果模型的三步
+1.5 术语
+概率&统计&因果
+
+
+summary:This hierarchy also defines a natural partitioning of the chapters in this book. Chapter 2 will deal primarily with the probabilistic aspects of causal Bayesian networks (though the underlying causal structure will serve as a conceptual guide). Chapters 3–6 will deal exclusively with the interventional aspects of causal models, including the identification of causal effects, the clarification of structural equation models, and the relationships between confounding and collapsibility. Chapters 7–10 will deal with counterfactual analysis, including axiomatic foundation, applications to policy analysis, the bounding of counterfactual queries, the identification of probabilities of causes, and the explication of single-event causation.
+总结：第一章从概率引入了因果，讲明概率在因果推断里的重要性，随即补充一些概率知识。然后把概率、和图用bayes网络连接起来，重点介绍贝叶斯网路，中间穿插因果推断的概念。
+第三节接着加入因果，讲贝叶斯因果网络的概念；第四节引入更一般的结构方程，交代我们在因果推断里面用结构方程要做的三件事：预测、干预、反事实；后续的三个小节是对这三件事的小展开（主要讲引出的逻辑），结合前面的例子，分析markov模型和贝叶斯模型的不同，同时时不时提到后文内容。
+最后这一章作为本书的介绍章，强调书中的概率&统计&因果概念的差别。

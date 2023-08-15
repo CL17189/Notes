@@ -1,0 +1,145 @@
+第五章：应用章节——Causality and Structural Models in Social Science and Economics
+作者认为SEM的方法怀才不遇。
+这一章我们讲如何把图模型和干预逻辑加入进去，把之前讨论的东西加入进来；
+再回到非参数，再到问题。
+
+主要内容：SEM的历史和对于因果的解释问题（5.1，5.2）；递归模型的统计内容，d-seperation的应用，图的等价检验；结构参数的可识别性；
+*参数的可识别和非参模型的因果效应的可识别的关系
+
+5.1 介绍
+1. Causality in Search of a Language
+概率论中没有表达因果的标准语言
+结构方程中和潜在结果框架对于因果的语言都是存在问题的
+mystery：causality in search of a language and, simultaneously, speakers of that language in search of its meaning.
+
+2.SEM当下的危机
+问题：“Under what conditions can we give causal interpretation to structural coefficients?”
+
+有人认为需要更多“成分”：selfcontainment<=>条件独立，后来被好多人放弃了
+
+结构参数：没有人能说明白参数里面的因果含义
+
+所以大家就不说了
+因为没有合适的符号
+
+3. Graph作为数学语言
+进来的突破是图结合概率作为数学语言
+优点是提供了符号系统
+例子：图的能力
+*加入某个回归系数后其他系数发生反转，simpson悖论
+
+the solution to Simpson’s paradox and the covariate selection problem rests on causal assumptions, and such assumptions cannot be expressed formally in the standard language of statistics
+
+但是图提供了一个自然且正式的解法
+
+图回答了这样一些问题：
+What makes a set of equations “structural,” 
+what assumptions are expressed by the authors of such equations, 
+what the testable implications of those assumptions are,
+what policy claims a given set of structural equations advertises are some of the questions that receive simple and mathematically precise answers via graphical methods.
+
+5.2 图和模型检验
+引子：Wright（1919）method of path coefficients
+1. The Testable Implications of Structural Models
+“我们引入的统计假设其实是由图的结构决定的”
+一些记号；
+“A set of equations in the form of (5.1) will be called a causal model if each equation represents the process by which the value (not merely the probability) of variable Xi is selected”
+由这个东西连线出来的叫因果图
+The missing links in those statistical models represent conditional independencies, whereas the missing links in causal diagrams represent absence of causal connections
+Moreover, the partial correlation coefficient is zero if and only if holds in the distribution.
+
+def：d-Separation and Partial Correlations
+（Markovian models AKA recursive models）
+
+在Markovian models 中的参数可以用回归估计，同时d-deperation也是有效的
+TH：图和模型的对应性->识别在模型中消失的偏相关检验
+->CO：
+
+模拟半markov模型时候d-seperation的有效性：受限系统中仍然有效
+
+
+在线性模型中：
+TH：d-seperation
+
+可以检验模型
+
+
+def：Basis（关于相关系数定义的）
+
+def：图basis
+
+*basis的每个成员对应DAG里缺失的箭头，因此验证的次数需要等于缺失箭头的数量。
+
+2.Testing the Testable
+
+数据检验模型的步骤：
+1. 自由参数用最大似然估计；
+2.估计参数的协方差矩阵和样本协方差比较，通过统计检验确定后者是不是源于前者；
+
+缺点：
+1. 有些参数不可识别
+2.如果检验失败了没有反馈哪里错了
+
+例子：缺点
+
+一个替代方法：局部测试
+
+3. 模型等价
+
+在多为线性的SEM中如何把分布的等价拓展到covariance equivalent中
+TH：covariance equivalent
+说明在nonmanipulative studies，除了零偏相关特征之外其他不能被检验。简化
+
+semi中，d-seperation仍然可以检验独立性。但是独立性等价不意味着观测等价、因为模型相同但是协方差陈不一定有相同约束。
+
+a.生成等价模型
+markov中等价模型只要XY的父母一样
+semi中更复杂，双向箭头用隐变量表示；
+单向箭头换双向+条件；
+可以容忍的创造新V的情况->因为仍然可以被bolck；
+
+v结构的定义：Whereas in Markovian models a y-structure is defined as two converging arrows whose tails are not connected by a link, we now define y-structure as any two converging arrowheads whose tails are “separable.”
+By separable we mean that there exists a conditioning set S capable of d-separating the two tails
+
+*But a pair of nodes in a semi-Markovian model can be inseparable even when not connected by an edge
+
+TH：替换规则
+（其实就是总结了上面）
+
+不足之处的例子，因为不是充要条件；
+
+because two semi-Markovian 
+models can be zero-partial-correlation equivalent and yet not covariance equivalent, criteria based on d-separation can provide merely the necessary conditions for model equivalence.
+
+
+b.等价模型的重要性
+covariance equivalent定理说明了什么是可测试的；
+图方法相比于SEM成分之间更清晰和生动，猜测可能更易接受；
+社会学问题：if one model is supported, so too are all of its equivalent models
+SEM的问题：反转等等
+
+
+5.3 图和可识别性
+1. 线性模型的参数识别
+回归的例子
+TH：Single-Door Criterion for Direct Effects
+什么时候路径系数等于回归系数
+
+TH：后门准则
+
+一些其他情况：工具变量...
+
+算法步骤：
+
+增强效果的步骤：复杂效应
+
+
+2.和非参数可识别性的对比
+非参数模型的优点：线性和正态性不好找
+讨论线性SEM下的可识别性
+问题不在于可识别，而在于是否允许我们对传统上用参数模型回答的问题给出答案
+两个协方差等价的模型数据产生机制不一样
+
+3.因果效应：干预的解释
+例子模型的差别体现在数据对于外部干预的反应方式
+do在参数模型和非参模型

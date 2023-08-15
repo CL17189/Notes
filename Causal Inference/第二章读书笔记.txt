@@ -1,0 +1,124 @@
+第二章：A Theory of Inferred Causation
+这一章讲弱关系是否存在（prompt,assumption,model）
+2.1 一些直觉
+cannot distinguish genuine causation from spurious associations caused by unknown factors
+no genuine causal inferences are possible
+人们意识到这种模式，之后又提出了三个基本的子结构（链，叉，collider），于是意识到影响X,Y之间关系的关键在于第三个和X无关的量Z
+
+2.2 THE CAUSAL DISCOVERY FRAMEWORK
+人们认为自然界的变量之间有确定的函数关系，但是有一些变量是不可以观测的，这些机制以无环的结构存在
+
+Causal Structure：A causal structure of a set of variables V is a directed acyclic graph (DAG) in which each node corresponds to a distinct element of V, and each link represents a direct functional relationship among the corresponding variables.
+
+Here we assume that Nature is at liberty to impose arbitrary functional relationships between each effect and its causes and then to perturb these relationships by introducing arbitrary (yet mutually independent) disturbances. These disturbances reflect “hidden” or unmeasurable conditions that Nature governs by some undisclosed probability function
+
+Causal Model：A causal model is a pair consisting of a causal structure D and a set of parameters compatible with D. The parameters assign a function xi  fi ( pai,ui) to each and a probability measure P(ui) to each ui, where PAi are the parents of Xi in D and where each Ui is a random disturbance distributed according to P(ui), independently of all other u.
+
+显示它有Markovian
+
+潜变量保证了Markov property
+
+We investigate the feasibility of recovering the topology D of the DAG from features of the probability distribution P[O].
+
+2.3MODEL PREFERENCE (OCCAM’S RAZOR)
+V不确定从而模型就是不确定的，于是大伙就想找到了个喜闻乐见的理论：
+首先定义一下什么是因果关系、潜结构和结构偏爱（明确什么叫偏爱）
+Inferred Causation (Preliminary)) A variable X is said to have a causal influence on a variable Y if a directed path from X to Y exists in every minimal structure consistent with the data.
+
+Latent Structure) A latent structure is a pair where D is a causal structure over V and where is a set of observed variables. Definition 2.3.3 (Structure Preference) One latent structure is preferred to another (written if and only if D can mimic D over O – that is, if and only if for every there exists a ®D L  L)
+
+大伙因为怕后面犯错所以倾向于用更简单的东西
+
+？更复杂的情况
+
+def:Minimality
+最小的情况
+
+
+一致性（另一个P）
+
+
+由此我们定义推断因果关系：
+Inferred Causation) Given a variable C has a causal influence on variable E if and only if there exists a directed path from C to E in every minimal latent structure consistent with
+
+*事实上我们不保证这个定义总是识别自然中的稳定机制
+
+例子告诉我们要筛选符合事实的模型
+*The only assumption invoked in this implication is minimality – models that overfit the data are ruled out.
+
+2.4 STABLE DISTRIBUTIONS
+最小原则不保证生成的模型最小并且实用，“pathological”的例就算是最后我们会出现好几个模型都适用的情况无法区分。
+这时候的直观想法就是找那个能接受尽可能多的参数改动而不变化的模型
+因此我们需要对一些分布做限制，管这个限制叫stability 或者DAG-isomorphism or perfect-mapness
+
+This restriction conveys the assumption that all the independencies embedded in P are stable; that is, they are entailed by the structure of the model D and hence remain invariant to any change in the parameters
+
+
+def:Let I (P) denote the set of all conditional independence relationships embodied in P. A causal model generates a stable distribution if and only if contains no extraneous independences – that is, if and only if
+
+
+Succinctly, P is a stable distribution of M if it “maps” the structure D of M, that is, for any three sets of variables X, Y, and Z (see Theorem 1.2.5
+
+所以最小和稳定之间的关系是什么？case
+最小的例子：单个对象组成的场景更被偏爱，除非我们有其他证据
+稳定性消失的例子（某两个变量之间的条件独立会随着箭头（参数）的增加或者减少而消失）
+
+2.5 DAG结构
+在稳定性下，每个没有潜变量的分布都有唯一的最小因果结构（唯一性用observation equivalence确定）
+
+如果没有不能观测的变量，找到最小模型就归结于从条件独立的情况下建立DAG结构。但是找到的结构不一定是唯一的，所以我们想去找这个结构的等价类equivalence class of D0
+作者告诉我们这类图的表征在pattern这个东西下，A pattern is a partially directed DAG, in particular, a graph in which some edges are directed and some are nondirected.——无向的边表示这个边不确定是否有方向。
+接下来引入了IC算法找到这个类：
+ 
+这个算法的前两部是不明确的；第三步可以程序化
+
+
+2.6 潜在结构
+当考虑潜变量的时候，P就不再稳定了，因此我们要找的范围也就太广了。但是我们可以把范围限定到finite and well-defined structures中去，也就是投影、
+For every latent structure L,there is a dependency-equivalent latent structure (the projection) of L on O in which every unobserved node is a root node with exactly two observed children.
+那这个投影广泛存在吗：
+Theorem 2.6.2 (Verma 1993) Any latent structure has at least one projection.
+
+Theorem 2.6.2 renders our definition of inferred causation (Definition 2.3.6) operational; it can be shown (Verma 1993) that the existence of a certain link in a distinguished projection of any minimal model of must indicate the existence of a causal path in every minimal model of Thus, our search reduces to finding the distinguished projection of any minimal model of and identifying the appropriate links.
+这个搜索用IC算法的一个变体做：（引入有环图）
+
+？无向图怎么d-seperation
+
+2.7 LOCAL CRITERIA FOR INFERRING CAUSAL RELATIONS
+对上一步IC*算法中出现的潜在和真正的因果关系的准确定义。
+the essence of causal claims is to stipulate the behavior of X and Y under the influence of a third variable
+
+def : potential cause
+def：Genuine Cause
+
+def: Spurious Association
+主要这个定义是对potential cause 的逐项违反
+
+给定temperal info之后的实例化
+
+
+2.8NONTEMPORAL CAUSATION AND STATISTICAL TIME
+这一节探讨了时间在因果关系里的作用
+人类对于因果解释的期望：temporal（因在果前） and statistical（排序其他因素）.
+we often encounter phenomenon where knowledge of a present state renders the variables of the future state conditionally independent, But conversely not.
+这段话中，Pearl提到了两种现象：一种是在现在状态下对未来状态的变量进行条件独立的情况，另一种是在现在状态下对过去状态的组成部分进行条件独立的情况。
+
+第一种情况是比较常见的。举个例子，经济时间序列是一个典型的多变量现象。如果我们知道当前的经济状态，比如通货膨胀率、利率和失业率，这些变量的知识可能会使未来的经济变量在某种程度上相互独立，即使它们在过去的状态中可能是相关的。换句话说，当前状态的知识使未来的变量在某种程度上解耦，使它们在给定当前状态的条件下独立。
+
+然而，第二种情况却相对较少见。Pearl指出，很少有情况下，我们发现了一种逆向的现象，即知道当前状态会使过去状态的组成部分在某种程度上相互独立。也就是说，当前状态的知识通常并不能使过去状态的组成部分在给定当前状态的条件下独立。
+
+Pearl提出了一个问题：为什么存在这种时间方向上的偏差？为什么我们更容易观察到当前状态对未来状态的影响，而很少观察到当前状态对过去状态的影响呢？他暗示这可能与因果关系和时间的流动有关，暗示了对因果关系和条件独立性在时间维度上的理解和建模的一些挑战。
+
+def: Statistical Time
+推断:Temporal Bias
+
+->the consistent agreement between physical and statistical times is a by-product of the human choice of linguistic primitives and not a feature of physical reality
+
+2.9结论
+统计学在大多数情况下可以区分虚假伴随和真正的因果关系；
+对于安全性：Rephrased as a logical guarantee, we can categorically assert that the IC* algorithm will never label an arrow as genuine if in fact a has no causal influence on b and if the observed distribution is stable relative to its underlying causal model.
+在实践中，我们利用最小和稳定性可以建立一个因果网络。
+和现行机器学习方法将每个假设定义为一个可以观测的子集。但是在因果里，我们还是留下了大量主张不一样的理论。-
+->因此，对数据的适应性对因果理论不是一个足够的标准
+1. 对于极小性和稳定性的辩护——因为传统统计学家认为相关代表因果
+
